@@ -1,5 +1,6 @@
 import { Node, parseSync, Program } from 'oxc-parser';
 import { visit } from './visit';
+import { visit as visit2 } from './visit2';
 import massiveStr from '../massive.tsx?raw';
 
 const smallStr = '<div className="bar" />';
@@ -42,7 +43,7 @@ function countJSXElements(program: Program): JSXStats {
     totalNodes: 0,
   };
 
-  visit(program, (node) => {
+  visit2(program, (node) => {
     stats.totalNodes++;
     
     if (node.type === 'JSXElement') {
